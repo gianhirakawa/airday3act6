@@ -23,6 +23,7 @@ warnings.filterwarnings("ignore")
 st.set_page_config(page_title="AI First Chatbot Template", page_icon="", layout="wide")
 
 with st.sidebar :
+    st.image('ninangrea.png')
     openai.api_key = st.text_input('Enter OpenAI API token:', type='password')
     if not (openai.api_key.startswith('sk-') and len(openai.api_key)==164):
         st.warning('Please enter your OpenAI API token!', icon='⚠️')
@@ -36,8 +37,8 @@ with st.sidebar :
 
     options = option_menu(
         "Dashboard", 
-        ["Home", "About Us", "Model"],
-        icons = ['book', 'globe', 'tools'],
+        ["Home", "Tara lets cook!"],
+        icons = ['book', 'tools'],
         menu_icon = "book", 
         default_index = 0,
         styles = {
