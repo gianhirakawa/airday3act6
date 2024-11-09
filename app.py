@@ -71,7 +71,7 @@ if options == "Home" :
 #     st.write("\n")
 
 # Options : Model
-elif options == "Model" :
+elif options == "Tara lets cook!" :
     st.title("Itanong mo kay Ninang Rea!")
     col1, col2, col3 = st.columns([1,2,1])
 
