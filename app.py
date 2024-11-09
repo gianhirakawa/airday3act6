@@ -176,7 +176,31 @@ elif options == "Isurprise mo ako!" :
         struct.append({"role":"user","content": user_message})
         chat = openai.ChatCompletion.create(model="gpt-4o-mini", messages = struct)
         response = chat.choices[0].message.content
-        struct.append({"role":"assistance","content":response})
-        st.success("Here's what I think...")
-        st.subheader("Summary : ")
-        st.write(response)
+        
+        # Extract the first recipe name from the response
+        try:
+            # First, get the first few lines of the response
+            first_lines = response.split('\n')[0:3]  # Take first 3 lines
+            # Look for the recipe name (usually after a number or heading)
+            recipe_name = next((line.split(':')[-1].strip() for line in first_lines if ':' in line), 'Filipino dish')
+            
+            # Create image prompt based on the recipe
+            image_prompt = f"A photorealistic {recipe_name}, Filipino dish, served on a plate"
+            # Ensure prompt is within length limit
+            image_prompt = image_prompt[:1000]
+            
+            image_response = openai.Image.create(
+                prompt=image_prompt,
+                n=1,
+                size="1024x1024"
+            )
+            image_url = image_response['data'][0]['url']
+            
+            st.success("Eto na wait langs...")
+            st.image(image_url, caption=f"Generated image of {recipe_name}", use_column_width=True)
+            st.subheader("Summary : ")
+            st.write(response)
+        except Exception as e:
+            st.error(f"Failed to generate image: {str(e)}")
+            st.subheader("Summary : ")
+            st.write(response)
