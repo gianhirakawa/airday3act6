@@ -56,19 +56,18 @@ if 'chat_session' not in st.session_state:
 # Options : Home
 if options == "Home" :
 
-    st.title("This is the Home Page!")
-    st.write("Intorduce Your Chatbot!")
-    st.write("What is their Purpose?")
-    st.write("What inspired you to make [Chatbot Name]?")
+    st.title("Welcome to Ninang Rea!")
+    st.write("Ninang Rea is here to help you cook Filipino dishes!")
+    st.write("Feel free to ask her anything about Filipino cuisine!")
    
-elif options == "About Us" :
-    st.title("About Us")
-    st.write("# [Name]")
-    st.image('images/Meer.png')
-    st.write("## [Title]")
-    st.text("Connect with me via Linkedin : [LinkedIn Link]")
-    st.text("Other Accounts and Business Contacts")
-    st.write("\n")
+# elif options == "About Us" :
+#     st.title("About Us")
+#     st.write("# [Name]")
+#     st.image('')
+#     st.write("## [Title]")
+#     st.text("Connect with me via Linkedin : [LinkedIn Link]")
+#     st.text("Other Accounts and Business Contacts")
+#     st.write("\n")
 
 # Options : Model
 elif options == "Model" :
